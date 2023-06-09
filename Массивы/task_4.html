@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Массивы</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <style>
+        button {
+            margin-top: 10px;
+        }
+        table {
+            margin-left: 140px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Навигация</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="task_1.html">Задание 1</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="task_2.html">Задание 2</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="task_3.html">Задание 3</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="task_4.html">Задание 4</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Симуляция выпадения цветов</h1>
+            <div class="input-field">
+                <button type="button" class="btn btn-primary" onclick="random()">Запустить
+                </button>
+                <p id="result" class="message"></p>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function random() {
+        const colors = ['Красный', 'Черный', 'Белый'];
+        const counts = [0, 0, 0];
+
+        for (let i = 0; i < 1000000; i++) {
+            const randomNum = Math.floor(Math.random() * 3);
+            counts[randomNum]++;
+        }
+
+        const existingTable = document.querySelector('table');
+        if (existingTable) {
+            existingTable.remove();
+        }
+
+        const table = document.createElement('table');
+        const trHeader = document.createElement('tr');
+        const thColor = document.createElement('th');
+        thColor.textContent = 'Цвет';
+        const thCount = document.createElement('th');
+        thCount.textContent = 'Выпал раз';
+        trHeader.appendChild(thColor);
+        trHeader.appendChild(thCount);
+        table.appendChild(trHeader);
+
+        for (let i = 0; i < colors.length; i++) {
+            const tr = document.createElement('tr');
+            const tdColor = document.createElement('td');
+            tdColor.textContent = colors[i];
+            const tdNumber = document.createElement('td');
+            tdNumber.textContent = counts[i].toString();
+            tr.appendChild(tdColor);
+            tr.appendChild(tdNumber);
+            table.appendChild(tr);
+        }
+
+        document.body.appendChild(table);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Массивы</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <style>
+        button {
+            margin-top: 10px;
+        }
+        table {
+            margin-left: 140px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Навигация</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="task_1.html">Задание 1</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="task_2.html">Задание 2</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="task_3.html">Задание 3</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="task_4.html">Задание 4</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Анализ массива случайных чисел</h1>
+            <div class="input-field">
+                <input type="text" class="form-control" id="number-input" name="number-input"
+                       placeholder="введите диапазон для случайных значений в формате 0, 1">
+                <button type="button" class="btn btn-primary" onclick="random()">Анализ
+                </button>
+                <p id="result" class="message"></p>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function random() {
+        let inputValue = document.getElementById("number-input").value;
+
+        let randomNumbersPositive = [];
+        let randomNumbersNegative = [];
+        let zeros = [];
+
+        for (let i = 0; i < 15; i++) {
+            let min = parseInt(inputValue.split(", ")[0]);
+            let max = parseInt(inputValue.split(", ")[1]);
+
+            let randomNumber = Math.floor(Math.random() * (max - min + 1) + min);
+
+            if (randomNumber > 0) {
+                randomNumbersPositive.push(randomNumber);
+            }
+            if (randomNumber < 0) {
+                randomNumbersNegative.push(randomNumber);
+            }
+            if (randomNumber === 0) {
+                zeros.push(randomNumber);
+            }
+        }
+
+        let sumPositive = 0;
+
+        for (let i = 0; i < randomNumbersPositive.length; i++) {
+            sumPositive += randomNumbersPositive[i];
+        }
+
+        let positiveAvg = sumPositive / randomNumbersPositive.length;
+
+        let sumNegative = 0;
+
+        for (let i = 0; i < randomNumbersNegative.length; i++) {
+            sumNegative += randomNumbersNegative[i];
+        }
+
+        let negativeAvg = sumNegative / randomNumbersNegative.length;
+
+        let zerosAmount = zeros.length;
+
+        const existingTable = document.querySelector('table');
+        if (existingTable) {
+            existingTable.remove();
+        }
+
+        const table = document.createElement('table');
+        const thead = document.createElement('thead');
+        const trHead = document.createElement('tr');
+        const thCrit = document.createElement('th');
+        const thVal = document.createElement('th');
+        thCrit.textContent = 'Критерий';
+        thVal.textContent = 'Значение';
+        trHead.appendChild(thCrit);
+        trHead.appendChild(thVal);
+        thead.appendChild(trHead);
+        table.appendChild(thead);
+
+        const tbody = document.createElement('tbody');
+
+        const trVar1 = document.createElement('tr');
+        const tdCrit1 = document.createElement('td');
+        const tdVal1 = document.createElement('td');
+        tdCrit1.textContent = 'Среднее по положительным';
+        tdVal1.textContent = positiveAvg.toString();
+        trVar1.appendChild(tdCrit1);
+        trVar1.appendChild(tdVal1);
+        tbody.appendChild(trVar1);
+
+        const trVar2 = document.createElement('tr');
+        const tdCrit2 = document.createElement('td');
+        const tdVal2 = document.createElement('td');
+        tdCrit2.textContent = 'Среднее по отрицательным';
+        tdVal2.textContent = negativeAvg.toString();
+        trVar2.appendChild(tdCrit2);
+        trVar2.appendChild(tdVal2);
+        tbody.appendChild(trVar2);
+
+        const trVar3 = document.createElement('tr');
+        const tdCrit3 = document.createElement('td');
+        const tdVal3 = document.createElement('td');
+        tdCrit3.textContent = 'Число нулей';
+        tdVal3.textContent = zerosAmount.toString();
+        trVar3.appendChild(tdCrit3);
+        trVar3.appendChild(tdVal3);
+        tbody.appendChild(trVar3);
+        table.appendChild(tbody);
+
+        document.body.appendChild(table);
+    }
+</script>
+</body>
+</html>

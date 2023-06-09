@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tree</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        let first_number = Number(prompt("Enter first number: "))
+        let second_number = Number(prompt("Enter second number: "))
+
+        let sum = first_number + second_number
+        let difference = first_number - second_number
+        let product = first_number * second_number
+        let quotient = first_number / second_number
+        let power = first_number ** second_number
+        
+        alert("Sum = " + sum)
+        alert("Difference = " + difference)
+        alert("Product = " + product)
+        alert("Qoutient = " + quotient)
+        alert("Power = " + power)
+
+        let magic_number = Number(prompt("Imagine a number, then multiply in by 2 and add 7. Enter the result: "))
+
+        alert("Your number is " + ((magic_number - 7) / 2))
+
+        let name = prompt("Enter your name: ")
+        let year_of_birth = Number(prompt("Enter your year of birth: "))
+
+        document.write(name + " : " + (new Date().getFullYear() - year_of_birth)) 
+    </script>
+</head>
+<body>
+<p id="User"></p>
+<h1>Flower tree</h1>
+<div class="canvas">
+    <div class="tree">
+        <div class="trunk">
+            <div class="branch">
+                <div class="leaf"></div>
+                <div class="flower"></div>
+                <div class="leaf"></div>
+                <div class="flower"></div>
+                <div class="leaf"></div>
+                <div class="flower"></div>
+            </div>
+            <div class="branch">
+                <div class="leaf"></div>
+                <div class="flower"></div>
+                <div class="leaf"></div>
+                <div class="flower"></div>
+                <div class="leaf"></div>
+            </div>
+            <div class="branch">
+                <div class="leaf"></div>
+                <div class="flower"></div>
+                <div class="leaf"></div>
+                <div class="flower"></div>
+            </div>
+            <div class="branch">
+                <div class="leaf"></div>
+                <div class="flower"></div>
+                <div class="leaf"></div>
+            </div>
+            <div class="branch">
+                <div class="leaf"></div>
+                <div class="flower"></div>
+            </div>
+            <div class="branch">
+                <div class="leaf"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

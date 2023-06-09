@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Циклы, ветвление</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <style>
+        #input-form {
+            margin-top: 3rem;
+            display: block;
+        }
+        .farewell {
+            font-size: 2rem;
+            margin-top: 3rem;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Навигация</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="task_1.html">Задание 1</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="task_2.html">Задание 2</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="task_3.html">Задание 3</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="task_4.html">Задание 4</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="task_5.html">Задание 5</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="task_6.html">Задание 6</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 id="message">Еще по одной?:</h1>
+            <form id="input-form">
+                <input type="text" id="input-value" name="input-value">
+                <button type="button" class="btn btn-primary" onclick="checkValue()">Отправить</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function checkValue() {
+        var inputValue = document.getElementById("input-value").value;
+        var inputForm = document.getElementById("input-form");
+        var inputField = document.getElementById("input-value");
+        var message = document.getElementById("message");
+
+        if (inputValue === "1") {
+            inputForm.style.display = "none";
+            message.textContent = "До новых встреч"
+        } else {
+            inputField.value = "";
+            inputForm.style.display = "block";
+        }
+    }
+</script>
+</body>
+</html>

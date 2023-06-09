@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Объекты</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <style>
+        .container {
+            margin-top: 100px;
+            margin-left: 400px;
+        }
+        button {
+            margin-top: 10px;
+            margin-left: 200px;
+        }
+        table {
+            border-collapse: collapse;
+            margin-left: 400px;
+        }
+        td, th {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Информация о пользователях</h1>
+            <div class="input-field">
+                <input type="text" class="form-control" id="number-input" name="number-input"
+                       placeholder="ввести информацию о пользователе">
+                <button type="button" class="btn btn-primary" onclick="run()">Добавить
+                </button>
+                <p id="result" class="message"></p>
+            </div>
+        </div>
+    </div>
+</div>
+<table id="table">
+    <thead>
+    <tr>
+        <th>Имя пользователя</th>
+        <th>Возраст</th>
+        <th>Дата регистрации</th>
+        <th>Число покупок</th>
+        <th>Подписка</th>
+    </tr>
+    </thead>
+</table>
+</body>
+<script>
+    function run() {
+        let value = document.getElementById("number-input").value;
+        function User(name, age, regDate, purchases, subscription) {
+            this.name = name;
+            this.age = age;
+            this.regDate = regDate;
+            this.purchases = purchases;
+            this.subscription = subscription;
+
+            this.addToTable = function() {
+                let newRow = document.getElementById("table").insertRow();
+
+                let nameCell = newRow.insertCell();
+                let ageCell = newRow.insertCell();
+                let regDateCell = newRow.insertCell();
+                let purchasesCell = newRow.insertCell();
+                let subscriptionCell = newRow.insertCell();
+
+                nameCell.innerHTML = this.name;
+                ageCell.innerHTML = this.age;
+                regDateCell.innerHTML = this.regDate;
+                purchasesCell.innerHTML = this.purchases;
+                subscriptionCell.innerHTML = this.subscription;
+            }
+        }
+        const userInfo = value.split(', ');
+
+        let user = new User(userInfo[0], userInfo[1], userInfo[2], userInfo[3], userInfo[4]);
+
+        user.addToTable();
+    }
+</script>
+</html>

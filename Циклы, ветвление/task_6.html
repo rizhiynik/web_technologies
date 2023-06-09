@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Циклы, ветвление</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <style>
+        button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Навигация</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="task_1.html">Задание 1</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="task_2.html">Задание 2</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="task_3.html">Задание 3</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="task_4.html">Задание 4</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="task_5.html">Задание 5</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="task_6.html">Задание 6</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <h1 class="my-5">Простые числа</h1>
+    <form>
+        <div class="form-group">
+            <input type="number" class="form-control" id="inputNumber" placeholder="введите число">
+        </div>
+        <button type="button" class="btn btn-primary" onclick="isPrime()">Отправить</button>
+    </form>
+    <div id="primeNumbers" class="mt-3"></div>
+</div>
+<script>
+    function isPrime() {
+        let num = parseInt(document.getElementById("inputNumber").value);
+        console.log(num);
+        let primeArray = [];
+
+        for (let i = 1; i <= num; i++) {
+            let isPrime = true;
+
+            for (let j = 2; j <= Math.floor(Math.sqrt(i)); j++) {
+                if (i % j === 0) {
+                    isPrime = false;
+                    break;
+                }
+            }
+            if (isPrime && i !== 1) {
+                primeArray.push(i);
+            }
+        }
+        console.log(primeArray);
+        document.getElementById("primeNumbers").innerHTML = primeArray.join(', ');
+    }
+</script>
+</body>
+</html>
